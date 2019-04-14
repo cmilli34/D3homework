@@ -14,6 +14,9 @@ var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
 
+// Append a div to the body to create tooltips, assign it a class
+//var div = d3.select(".chart").append("div").attr("class", "tooltip").style("opacity", 0);
+
 var svg = d3
   .select("#scatter")
   .append("svg")
@@ -27,13 +30,13 @@ var chosenXAxis = "Obesity"
 
 function xScale(newsData, chosenXAxis) {
 
-    var xLinearScale = d3.scaleLinear()
-    .domain([d3.min(newsData, d => d[chosenXAxis]) * 0.8,
-      d3.max(newsData, d => d[chosenXAxis]) * 1.2
-    ])
-    .range([0, width]);
+var xScale(newsData, d3.scaleLinear()
+    .domain([d3.min(newsData, d => d[chosenXAxis])* 0.8,
+    d3.max(newsData, d => d[chosenXAxis]) * 1.2
+])
+.range([0, width]);
 
-  return xLinearScale;
+return xLinearScale;
 
 }
 
@@ -91,7 +94,7 @@ return circlesGroup;
 d3.csv('data.csv', function(error, newsData) {
     if(error) throw err;
 
-    console.log(newsData);
+
     //convert non-string values to numeric. Learned a lot of this from 2-03-Par_BarChart_From_CSV app.js
     // initialize data points we're using
 
